@@ -1,0 +1,25 @@
+spring:
+  cloud:
+    function:
+      definition: like; comment; follow; # Consumer 함수 이름 - 메시지를 처리할 각 함수를 세미콜론으로 구분하여 정의
+    stream:
+      binder:
+        brokers: localhost:9092 # Kafka 브로커 서버 주소 및 포트 (여러 개 있을 경우 콤마로 구분 가능)
+      bindings:
+        comment-in-0: # 채널 이름 (기본 규칙: 함수이름-in-0) - 'comment' 함수가 소비할 입력 채널
+          destination: comment  # Kafka Topic 이름 - 이 채널이 구독할 Kafka 토픽
+          content-type: application/json # 메시지 형식 - JSON 형식으로 직렬화/역직렬화
+          group: notification-consumer # Consumer 그룹 ID - 같은 그룹의 소비자들은 토픽의 파티션을 분담해서 처리
+          consumer.max-attempts: 2 # 메시지 처리 실패 시 최대 재시도 횟수 - 2번까지 재시도 후 실패 시 오류 처리
+
+        like-in-0: # 'like' 함수의 입력 채널
+          destination: like # 'like' 토픽에서 메시지를 가져옴
+          content-type: application/json # JSON 형식 메시지
+          group: notification-consumer # 같은 consumer 그룹에 속함 - 여러 인스턴스가 실행되어도 중복 처리 방지
+          consumer.max-attempts: 2 # 최대 2번 재시도
+
+        follow-in-0: # 'follow' 함수의 입력 채널
+          destination: follow # 'follow' 토픽에서 메시지를 가져옴
+          content-type: application/json # JSON 형식 메시지
+          group: notification-consumer # 같은 consumer 그룹에 속함
+          consumer.max-attempts: 2 # 최대 2번 재시도
