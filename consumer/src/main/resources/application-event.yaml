@@ -1,7 +1,9 @@
 spring:
   cloud:
     function:
-      definition: like; comment; follow; # Consumer 함수 이름 - 메시지를 처리할 각 함수를 세미콜론으로 구분하여 정의
+      definition: like;comment;follow # Consumer 함수 이름 - 메시지를 처리할 각 함수를 세미콜론으로 구분하여 정의
+      scan:
+        enabled: false # 자동 스캔 비활성화
     stream:
       binder:
         brokers: localhost:9092 # Kafka 브로커 서버 주소 및 포트 (여러 개 있을 경우 콤마로 구분 가능)

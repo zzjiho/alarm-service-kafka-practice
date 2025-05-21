@@ -1,8 +1,8 @@
 package com.fc.repository;
 
 
-import com.fc.Notification;
-import com.fc.NotificationType;
+import com.fc.domain.Notification;
+import com.fc.domain.NotificationType;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.data.mongodb.repository.MongoRepository;

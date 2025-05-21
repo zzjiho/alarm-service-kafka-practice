@@ -1,4 +1,4 @@
-package com.fc;
+package com.fc.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,8 +12,8 @@ import java.time.Instant;
 @Setter
 @Getter
 @AllArgsConstructor
-@Document("notifications")
-public class Notification {
+@Document("notifications") // 몽고db 어떤 컬렉션에 넣을거냐는 의미
+public abstract class Notification {
     @Field(targetType = FieldType.STRING)   // ObjectId('123') -> "123"
     private String id;
     private long userId;

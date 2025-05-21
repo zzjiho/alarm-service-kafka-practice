@@ -12,7 +12,7 @@ docker compose -f docker-compose-single-kafka.yaml stop
 ```
 docker compose -f docker-compose-single-kafka.yaml down  
 ```
-
+    
 ## 카프카 컨테이너 내부 접속 (로컬 PC에 카프카가 설치되어있지 않다면 꼭 해주기!)
 로컬 PC에 카프카가 설치되어있지 않다면 kafka-topics 등 카프카 명령어를 사용할 수 없습니다.
 카프카 컨테이너에 내부 접속하여 아래 나오는 명령어들을 실행합니다.

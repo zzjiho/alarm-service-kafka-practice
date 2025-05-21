@@ -1,6 +1,6 @@
 plugins {
 	java
-	id("org.springframework.boot") version "3.4.5"
+	id("org.springframework.boot") version "3.2.3"
 	id("io.spring.dependency-management") version "1.1.4"
 }
 
@@ -10,7 +10,7 @@ java {
 	}
 }
 
-ext["springCloudVersion"] = "2023.0.0"	// https://spring.io/projects/spring-cloud-stream
+ext["springCloudVersion"] = "2023.0.2"	// https://spring.io/projects/spring-cloud-stream
 
 allprojects { // 루트프로젝트 + 하위프로젝트에 설정들이 적용됨
 	group = "com.fc"
