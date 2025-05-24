@@ -15,6 +15,10 @@ public class NotificationReadRepository {
         this.redisTemplate = redisTemplate;
     }
 
+    // 유저의 읽은 시간을 기록
+    // 기록해야 어디까지 읽었는지 알 수 있다.
+    // occurredAt 시간과 비교를 해서 LastReadAt이 이전이다 라고 하면 안읽은 알림 처리
+    // 새 알림 표시 할때도 알림들의 가장 최신 업데이트시간과 읽은시간을 비교해서 읽은시간이 더 이전이면 빨간점 뜨게 ㅇㅇㅇ
     public Instant setLastReadAt(long userId) {
         long lastReadAt = Instant.now().toEpochMilli();
         String key = getKey(userId);
@@ -35,6 +39,6 @@ public class NotificationReadRepository {
     }
 
     private String getKey(long userId) {
-        return userId + ":lastReadAt";
+        return userId + ":lastReadAt"; // redis에서 키에 여러 값 조합할때 : 이거 많이씀.
     }
 }
