@@ -1,6 +1,7 @@
 package com.fc.response;
 
 import com.fc.service.dto.GetUserNotificationsResult;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -9,11 +10,16 @@ import java.util.List;
 
 @Getter
 @AllArgsConstructor
+@Schema(description = "유저 알림 목록 응답")
 public class UserNotificationListResponse {
+
+    @Schema(description = "알림 목록")
     private List<UserNotificationResponse> notifications;
 
+    @Schema(description = "다음 페이지 존재 여부")
     private boolean hasNext;
 
+    @Schema(description = "다음 페이지 요청시 전달할 pivot 파라미터")
     private Instant pivot;
 
     public static UserNotificationListResponse of(GetUserNotificationsResult result) {
@@ -21,7 +27,7 @@ public class UserNotificationListResponse {
                 .map(UserNotificationResponse::of)
                 .toList();
 
-        Instant pivot = (result.isHasNext() && !notifications.isEmpty()) // 알림 없으면 pivot도 없음
+        Instant pivot = (result.isHasNext() && !notifications.isEmpty())
                 ? notifications.getLast().getOccurredAt() : null;
 
         return new UserNotificationListResponse(

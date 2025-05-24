@@ -2,17 +2,22 @@ package com.fc.response;
 
 import com.fc.domain.NotificationType;
 import com.fc.service.dto.ConvertedFollowNotification;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 
 import java.time.Instant;
 
 @Getter
+@Schema(description = "팔로우 알림 응답")
 public class FollowUserNotificationResponse extends UserNotificationResponse {
 
+    @Schema(description = "팔로우한 사용자 이름")
     private final String userName;
 
+    @Schema(description = "팔로우한 사용자 프로필 이미지")
     private final String userProfileImageUrl;
 
+    @Schema(description = "팔로우 여부")
     private final boolean isFollowing;
 
     public FollowUserNotificationResponse(String id, NotificationType type, Instant occurredAt, String userName,
