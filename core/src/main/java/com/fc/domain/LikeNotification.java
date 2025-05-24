@@ -19,15 +19,16 @@ public class LikeNotification extends Notification {
         this.likerIds = likerIds;
     }
 
+    // 리치모델관련: ddd책 읽기
     public void addLiker(long likerId, Instant occurredAt, Instant now, Instant retention) {
         this.likerIds.add(likerId);
-        this.setOccurredAt(occurredAt);
+        this.setOccurredAt(occurredAt); // 좋아요 눌렀을때 occuredAt을 갱신해줘야 알림 리스트에서 맨 처음에 노출시킴
         this.setLastUpdatedAt(now);
         this.setDeletedAt(retention);
     }
 
     public void removeLiker(long userId, Instant now) {
         this.likerIds.remove(userId);
-        this.setLastUpdatedAt(now);
+        this.setLastUpdatedAt(now); // 좋아요 취소시에는 최신으로 노출될 필요가 없어서, 이 필드만 갱신
     }
 }

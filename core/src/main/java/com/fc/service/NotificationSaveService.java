@@ -15,7 +15,7 @@ public class NotificationSaveService {
         this.repository = repository;
     }
 
-    public void insert(Notification notification) {
+    public void insert(Notification notification) { // insert는 기존 동일한 아이디가 있으면 예외 발생
         Notification result = repository.insert(notification);
         log.info("inserted: {}", result);
     }

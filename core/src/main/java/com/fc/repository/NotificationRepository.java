@@ -29,9 +29,13 @@ public interface NotificationRepository extends MongoRepository<Notification, St
     @Query("{ 'type': ?0, 'userId': ?1, 'followerId': ?2 }")
     Optional<Notification> findByTypeAndUserIdAndFollowerId(NotificationType type, long userId, long followerId);
 
+    // Slice는 다음 페이지 여부를 알 수 있다.
+    // 사용자의 모든 알림을 발생 시간 내림차순으로 페이징 조회
     Slice<Notification> findAllByUserIdOrderByOccurredAtDesc(long userId, Pageable page);
 
+    // 사용자의 특정 시간 이전 알림을 발생 시간 내림차순으로 조회
     Slice<Notification> findAllByUserIdAndOccurredAtLessThanOrderByOccurredAtDesc(long userId, Instant occurredAt, Pageable pageable);
 
+    // 사용자의 가장 최근에 업데이트된 알림 조회
     Optional<Notification> findFirstByUserIdOrderByLastUpdatedAtDesc(long userId);
 }

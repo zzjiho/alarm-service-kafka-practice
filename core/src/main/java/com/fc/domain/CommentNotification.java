@@ -6,7 +6,7 @@ import org.springframework.data.annotation.TypeAlias;
 import java.time.Instant;
 
 @Getter
-@TypeAlias("CommentNotification") // 자바로 역직렬화할때 어떤 클래스 사용해서 매핑할건지 지정
+@TypeAlias("CommentNotification") // 몽고 DB에 저장하고 다시 자바로 역직렬화할때 어떤 클래스 사용해서 매핑할건지 지정
 public class CommentNotification extends Notification {
     private final long postId;
     private final long writerId;

@@ -44,7 +44,7 @@ public class LikeRemoveTask {
     private void removeLikerAndUpdateNotification(LikeNotification notification, LikeEvent event) {
         notification.removeLiker(event.getUserId(), Instant.now());
 
-        if (notification.getLikerIds().isEmpty()) {
+        if (notification.getLikerIds().isEmpty()) { // 좋아요 취소시 empty되면 알림 삭제
             removeService.deleteById(notification.getId());
         } else {
             saveService.upsert(notification);
