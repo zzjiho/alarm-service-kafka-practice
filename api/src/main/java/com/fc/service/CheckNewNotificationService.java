@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.Instant;
 
+// 신규 알림이 있는지 없는지 체크하는 서비스
 @Component
 public class CheckNewNotificationService {
 

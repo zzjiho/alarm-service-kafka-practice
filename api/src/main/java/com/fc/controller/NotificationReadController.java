@@ -19,6 +19,10 @@ public class NotificationReadController implements NotificationReadControllerSpe
         this.service = service;
     }
 
+    /**
+     * 1. 읽은 현재 시간을 Redis에 저장 (90일 TTL)
+     * 2. 저장된 시간을 응답으로 반환
+     */
     @Override
     @PutMapping("/{userId}/read")
     public SetLastReadAtResponse setLastReadAt(

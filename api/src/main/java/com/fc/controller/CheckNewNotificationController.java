@@ -17,6 +17,11 @@ public class CheckNewNotificationController implements CheckNewNotificationContr
         this.service = service;
     }
 
+    /**
+     * 1. 사용자의 가장 최근 알림 업데이트 시간을 MongoDB에서 조회
+     * 2. 사용자의 마지막 읽은 시간을 Redis에서 조회
+     * 3. 두 시간을 비교하여 새 알림 여부 판단
+     */
     @Override
     @GetMapping("/{userId}/new")
     public CheckNewNotificationResponse checkNew(
