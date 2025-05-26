@@ -10,6 +10,7 @@ java {
 	}
 }
 
+// spring cloud stream
 ext["springCloudVersion"] = "2023.0.2"	// https://spring.io/projects/spring-cloud-stream
 
 allprojects { // 루트프로젝트 + 하위프로젝트에 설정들이 적용됨
@@ -44,6 +45,7 @@ subprojects { // 하위프로젝트에만 적용
 		testImplementation("org.springframework.boot:spring-boot-starter-test")
 	}
 
+	// spring cloud stream
 	dependencyManagement {
 		imports {
 			mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")

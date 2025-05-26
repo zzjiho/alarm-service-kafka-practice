@@ -12,7 +12,6 @@ import org.springframework.data.mongodb.core.SimpleMongoClientDatabaseFactory;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.utility.DockerImageName;
 
-// 몽고디비와 연결 설정 하는곳
 // Testcontainers를 통해 테스트용 MongoDB 컨테이너를 동적으로 시작
 @Profile("test")
 @Slf4j
@@ -54,7 +53,7 @@ public class LocalMongoConfig {
 
     private ConnectionString connectionString() {
         String host = mongo.getHost();
-        Integer port = mongo.getMappedPort(MONGODB_INNER_PORT);
+        Integer port = mongo.getMappedPort(MONGODB_INNER_PORT); // 외부접근시 포트가 다름. 임의로지정된 포트를 받아서 사용한다.
         return new ConnectionString("mongodb://" + host + ":" + port + "/" + DATABASE_NAME); // mongoDB에서 커넥션 스트링만드는 규칙
     }
 }

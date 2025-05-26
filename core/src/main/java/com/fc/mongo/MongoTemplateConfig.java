@@ -16,8 +16,8 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 // 실제 MongoTemplate 빈을 생성하고 MongoDB 리포지토리를 활성화
 @Configuration
 @EnableMongoRepositories(
-        basePackages = "com.fc",
-        mongoTemplateRef = MongoTemplateConfig.MONGO_TEMPLATE
+        basePackages = "com.fc", // com.fc 하위에있는 mongoDB repository는
+        mongoTemplateRef = MongoTemplateConfig.MONGO_TEMPLATE // 이 템플릿 사용해라
 )
 public class MongoTemplateConfig {
 

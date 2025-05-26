@@ -12,6 +12,7 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
+
 @Component
 public class CommentAddTask {
 
@@ -27,6 +28,7 @@ public class CommentAddTask {
         this.saveService = saveService;
     }
 
+    // 이벤트를 받아서 처리한다.
     public void processEvent(CommentEvent event) {
         Post post = postClient.getPost(event.getPostId());
 
@@ -61,4 +63,6 @@ public class CommentAddTask {
                 comment.getId()
         );
     }
+
+
 }

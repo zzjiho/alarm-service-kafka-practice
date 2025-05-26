@@ -25,7 +25,7 @@ public class CommentEventConsumer {
         this.commentRemoveTask = commentRemoveTask;
     }
 
-    @Bean("comment") // event yaml 에 정의되어야함
+    @Bean("comment") // event yaml 에 정의된 definition, destination 과 일치해야함
     public Consumer<CommentEvent> comment() { // add인경우 댓글추가 이벤트를 처리하는 task 호출
         return event -> {
             if (event.getType() == ADD) {
